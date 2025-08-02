@@ -1,97 +1,95 @@
-Task_05_Machine_Learning_Analysis
-AI Model Training Process & Performance Metrics
+LLM Prompting Process & Examples
 Note:
-All experiments, model training, and evaluations in this project use Boston University Men's Soccer data from the 2023 and 2024 seasons.
-As part of this machine learning research task, I trained multiple neural network models to predict game outcomes for the BU Men's Soccer team using only statistical features from these two seasons. The models were evaluated for accuracy, precision, recall, and required hyperparameter tuning.
+All prompts, analysis, and visualizations in this project use Syracuse University Women’s Lacrosse data from the 2024 and 2025 seasons.
 
-Model Training Examples and Results
-1. Season Performance Prediction
+As part of this research task, I challenged ChatGPT (a Large Language Model) to answer natural language questions about the SU Women’s Lacrosse dataset using only small table snippets from these two seasons. The results were tracked for accuracy, clarity, and any required prompt engineering.
 
-Input Features:
-Given the following training data, predict win probability for BU Men's Soccer in 2023 and 2024:
-Season  Matches  Wins  Losses  Draws  Goals_For  Goals_Against  Home_Record  Away_Record
-2023    18       12    4       2      34         18             7-1-1        5-3-1
-2024    20       8     9       3      26         31             4-4-1        4-5-2
+Example Prompts and Results
+1. Games Played per Year
 
-Model Output:
+Prompt:
+Given the following table, how many games did SU Women’s Lacrosse play in 2024 and 2025?
 
-2023 Win Probability: 78.5%. 2024 Win Probability: 43.2%.
+Year  Games  Wins  Losses  Home  Away  Neutral  Conference  NonConference
+2024  22     16    6       9-2   5-2   2-2      9-1         7-5
+2025  19     10    9       5-4   4-4   1-1      5-4         5-5
+LLM Response:
 
-Evaluation:
-Accurate predictions. Model correctly identified performance decline.
-
-2. Home vs Away Performance Analysis
-
-Training Objective:
-Predict venue advantage based on historical home and away records.
-
-Model Results:
-
-Home advantage factor: +0.23 goal differential. Away performance: -0.18 goal differential.
-
-Validation:
-Correctly identified home field advantage.
-
-3. Goal Differential Prediction
-
-Feature Engineering:
-Using offensive and defensive metrics, predict final goal differential per match.
-
-Model Performance:
-
-MAE: 1.2 goals per game. R²: 0.76. Model successfully predicted 73% of match outcomes.
+In 2024, SU played 22 games. In 2025, they played 19 games.
 
 Result:
-Strong predictive accuracy for goal-based metrics.
+Correct. No prompt engineering needed.
 
-4. Opponent Strength Classification
+2. Win-Loss Record
 
-Training Data:
-Historical match results against ranked opponents.
-(sample including Sept 15 vs #3 Duke University: BU 1, Duke 4)
+Prompt:
+What was SU’s win-loss record for 2024 and 2025 based on this table?
 
-Model Classification:
+LLM Response:
 
-Duke classified as "High Difficulty" opponent (predicted loss margin: 2.8 goals).
+2024: 16 wins, 6 losses. 2025: 10 wins, 9 losses.
 
-Validation:
-Correct classification and margin prediction.
+Result:
+Correct.
 
-5. Attendance Impact on Performance
+3. Home vs Away Win Percentage
 
-Feature Analysis:
-Correlation between home attendance and match outcomes.
-(dataset including Oct 7 vs Northeastern, Attendance 1,847)
+Prompt:
+Based on the home and away records, did SU perform better at home or away in 2024? Show win percentages.
 
-Model Finding:
+LLM Response:
 
-Attendance threshold of 1,500+ correlates with 68% win rate vs 45% below threshold.
+At home: 9-2 (81.8% win rate). Away: 5-2 (71.4% win rate). SU performed better at home.
 
-Statistical Significance:
-p-value < 0.05, confirming attendance impact.
+Result:
+Correct, with calculation.
 
-6. Season Trajectory Forecasting
+4. Toughest Opponent by Margin of Defeat
 
-Predictive Task:
-Based on mid-season performance metrics, forecast end-of-season record.
-Season   Goals/Match   Opp_Goals/Match   Current_Record
-2023     1.89          1.00              8-2-1
-2024     1.30          1.55              4-6-2
+Prompt:
+Here’s a list of 2024 game results. Who was their toughest opponent, based on the largest margin of defeat?
+(sample table including Apr 28 vs Boston College: SU 8, Opp 15)
 
-Model Prediction:
+LLM Response:
 
-2023 projected final: 15-2-1 (actual: 12-4-2). 2024 projected: 7-10-3 (actual: 8-9-3).
+Boston College on April 28 (lost 8–15, margin: –7).
 
-Accuracy:
-85% accuracy in win prediction, 92% in trend identification.
+Result:
+Correct.
 
-Machine Learning Pipeline Insights
+5. Highest Home Game Attendance
 
-All models were trained exclusively on 2023 and 2024 season data.
-Simple feature engineering with tabular data achieved high accuracy.
-For complex predictions, ensemble methods combining multiple algorithms improved performance.
-Hyperparameter tuning was most critical for neural network models predicting continuous variables.
+Prompt:
+Which 2024 home game had the highest attendance, and what was the outcome?
+(table including Mar 16 vs #9 North Carolina, Attendance 2982)
 
+LLM Response:
 
-Model Performance Summary
-Neural networks trained on clear, structured BU Men's Soccer data from 2023 and 2024 seasons achieved 78% average accuracy across all prediction tasks, with minimal feature engineering required for most classification problems.
+The highest attendance was vs #9 North Carolina on March 16 (2,982 attendees). SU won 20–5.
+
+Result:
+Correct.
+
+6. Coach Strategy: Offense or Defense?
+
+Prompt:
+Based on these yearly stats, if the coach wants to win 2 more games in 2026, should the focus be on improving offense or defense? Explain with data.
+
+Year   Goals/Game   Opp Goals/Game
+2024   15.23        9.68
+2025   12.37        11.63
+LLM Response:
+
+Both offense and defense worsened in 2025. The bigger drop was in offense (goals/game down by nearly 3), so the coach should prioritize improving offense.
+
+Result:
+Correct, logical answer.
+
+Prompt Engineering Insights
+All questions and analysis were based strictly on 2024 and 2025 season data.
+Simple tabular prompts led to correct answers.
+For reasoning questions, providing summary stats or clarifying what to compare led to detailed and accurate responses.
+When asked open-ended questions, the LLM sometimes needed clarification on what metric to use, especially for “most improved player” or similar queries.
+Conclusion
+When given clear, relevant data in a small table from the 2024 and 2025 seasons, ChatGPT answered all six research questions about the SU Women’s Lacrosse season accurately and logically, requiring little to no additional prompt engineering.
+
